@@ -12,6 +12,48 @@ document.getElementById("National-Emergency").addEventListener("click", function
     callPop(card);
 })
 
+document.getElementById("police").addEventListener("click", function (e) {
+    e.preventDefault();
+    const card = this.closest(".card");
+    callPop(card);
+})
+document.getElementById("Fire-Service").addEventListener("click", function (e) {
+    e.preventDefault();
+   const card = this.closest(".card");
+    callPop(card);
+})
+document.getElementById("Ambulance").addEventListener("click", function (e) {
+    e.preventDefault();
+    const card = this.closest(".card");
+    callPop(card);
+})
+document.getElementById("Women").addEventListener("click", function (e) {
+    e.preventDefault();
+    const card = this.closest(".card");
+    callPop(card);
+})
+document.getElementById("Anti-Corruption").addEventListener("click", function (e) {
+    e.preventDefault();
+    const card = this.closest(".card");
+    callPop(card);
+})
+document.getElementById("Electricity-Outage").addEventListener("click", function (e) {
+    e.preventDefault();
+    const card = this.closest(".card");
+    callPop(card);
+})
+document.getElementById("Brac").addEventListener("click", function (e) {
+    e.preventDefault();
+    const card = this.closest(".card");
+    callPop(card);
+})
+document.getElementById("Bangladesh-Railway").addEventListener("click", function (e) {
+    e.preventDefault();
+   const card = this.closest(".card");
+    callPop(card);
+})
+
+
 
 
 // Love Count 
