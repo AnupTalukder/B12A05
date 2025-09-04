@@ -90,5 +90,83 @@ callButtons.forEach(button => {
 
 
 
+//copy 
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const copies = document.querySelectorAll('.copies');
+    const copy_counter = document.getElementById('copy-counter');
+    let copy_count = 0;
+
+    copies.forEach(copy => {
+        copy.addEventListener('click', function () {
+            const card = this.closest('.card'); 
+            const number = card.querySelector('.number').innerText; 
+
+            navigator.clipboard.writeText(number).then(() => {
+                copy_count++;
+                copy_counter.textContent = copy_count;
+                alert("Copied: " + number);
+            });
+    });
+});
+});
+
+
+
+
+
+
+// history list 
+
+
+const callHistoryList = document.getElementById('call-history-list')
+const calls = document.querySelectorAll('.calls')
+const clearBtn = document.querySelector('button')
+
+function formatTime(date){
+    let h = date.getHours()
+    let m = date.getMinutes()
+    let s = date.getSeconds()
+    let ampm = h >= 12 ? 'PM' : 'AM'
+    h = h % 12
+    h = h ? h : 12
+    m = m < 10 ? '0'+m : m
+    s = s < 10 ? '0'+s : s
+    return `${h}:${m}:${s} ${ampm}`
+}
+
+calls.forEach(btn=>{
+    btn.addEventListener('click',()=>{
+        let name = btn.closest('.card').querySelector('h1').innerText
+        let number = btn.closest('.card').querySelector('h2').innerText
+        let div = document.createElement('div')
+        div.className = 'flex justify-between items-center p-2 bg-gray-100 rounded-lg'
+        div.innerHTML = `<span class="text-gray-700 font-medium">${name}<br>${number}</span><span class="time text-gray-500 text-xs">${formatTime(new Date())}</span>`
+        callHistoryList.prepend(div)
+    })
+})
+
+
+
+
+// delete history 
+
+const clearButton = document.querySelector('.clear');
+const callHistory = document.getElementById('call-history-list');
+
+clearButton.addEventListener('click', () => {
+    callHistory.innerHTML = ''; 
+});
+
+
+
+
+
+
+
+
+
 
 
