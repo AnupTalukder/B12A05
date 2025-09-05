@@ -70,19 +70,57 @@ icons.forEach(icon => {
 });
 
 
-//coin count 
+//coin count and history 
+
+
+
 
 
 const callButtons = document.querySelectorAll('.calls');
 const coinCountEl = document.getElementById('coin-count');
 let coins = parseInt(coinCountEl.textContent);
+const callHistoryList = document.getElementById('call-history-list');
+const clearBtn = document.querySelector('button');
+
+
+
+function formatTime(date){
+    let h = date.getHours()
+    let m = date.getMinutes()
+    let s = date.getSeconds()
+    let ampm = h >= 12 ? 'PM' : 'AM'
+    h = h % 12
+    h = h ? h : 12
+    m = m < 10 ? '0'+m : m
+    s = s < 10 ? '0'+s : s
+    return `${h}:${m}:${s} ${ampm}`
+}
+
+
+
+
+
 
 callButtons.forEach(button => {
     button.addEventListener('click', function (e) {
         if (coins >= 20) {
             coins = coins-20;
-            coinCountEl.textContent = coins;
-        } else {
+            coinCountEl.textContent = coins; 
+            
+            //call history
+         
+        let name = button.closest('.card').querySelector('h1').innerText
+        let number = button.closest('.card').querySelector('h2').innerText
+        let div = document.createElement('div')
+        div.className = 'flex justify-between items-center p-2 bg-gray-100 rounded-lg'
+        div.innerHTML = `<span class="text-gray-700 font-medium">${name}<br>${number}</span><span class="time text-gray-500 text-xs">${formatTime(new Date())}</span>`
+        callHistoryList.prepend(div)
+    
+
+
+        } 
+        
+        else {
             alert("Not enough coins!");
         }
     });
@@ -117,36 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-// history list 
-
-
-const callHistoryList = document.getElementById('call-history-list')
-const calls = document.querySelectorAll('.calls')
-const clearBtn = document.querySelector('button')
-
-function formatTime(date){
-    let h = date.getHours()
-    let m = date.getMinutes()
-    let s = date.getSeconds()
-    let ampm = h >= 12 ? 'PM' : 'AM'
-    h = h % 12
-    h = h ? h : 12
-    m = m < 10 ? '0'+m : m
-    s = s < 10 ? '0'+s : s
-    return `${h}:${m}:${s} ${ampm}`
-}
-
-calls.forEach(btn=>{
-    btn.addEventListener('click',()=>{
-        let name = btn.closest('.card').querySelector('h1').innerText
-        let number = btn.closest('.card').querySelector('h2').innerText
-        let div = document.createElement('div')
-        div.className = 'flex justify-between items-center p-2 bg-gray-100 rounded-lg'
-        div.innerHTML = `<span class="text-gray-700 font-medium">${name}<br>${number}</span><span class="time text-gray-500 text-xs">${formatTime(new Date())}</span>`
-        callHistoryList.prepend(div)
-    })
-})
 
 
 
