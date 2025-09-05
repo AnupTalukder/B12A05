@@ -3,7 +3,7 @@ function callPop(card) {
     const paragraph = card.querySelector("p").innerText;
     const number = card.querySelector("h2").innerText;
 
-    alert("Calling " + paragraph + " Service" + " : " + number);
+    alert("Calling " + paragraph + " Service" +  number+"...");
 }
 
 document.getElementById("National-Emergency").addEventListener("click", function (e) {
